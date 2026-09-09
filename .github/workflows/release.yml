@@ -1,4 +1,4 @@
-name: Release
+name: Release WTF
 
 # Trigger this workflow on GitHub Web UI. If GitHub is down, we don't need to do anything.
 
