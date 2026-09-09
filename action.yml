@@ -95,8 +95,9 @@ runs:
   - name: Check the existence of built JavaScript action
     shell: python
     run: |
-      system('pwd')
-      system('find .')
+      import os
+      os.system('pwd')
+      os.system('find .')
       from pathlib import Path
 
       if Path("./action/lib/main.js").exists():
