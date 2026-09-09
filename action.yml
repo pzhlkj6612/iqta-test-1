@@ -94,11 +94,8 @@ runs:
   steps:
   - name: Check the existence of built JavaScript action
     shell: python
-    working-directory: ${{ github.action_path }}
+    working-directory: ${{ github.action_path }}  # $GITHUB_ACTION_PATH
     run: |
-      import os
-      os.system('pwd')
-      os.system('find .')
       from pathlib import Path
 
       if Path("./action/lib/main.js").exists():
@@ -108,11 +105,11 @@ runs:
         'This TypeScript action cannot be used before building within Node.js environment.',
         'Maybe you are currently using non-tagging branches, for example, the "master" branch.',
         'Only v* branches have built JavaScript action file.',
-        'If you would like to test unreleased changes, please refer to the CI workflows in',
-        'our repository: https://github.com/jurplel/install-qt-action .',
-        'Exiting',
+        'If you would like to test unreleased changes, please refer to the CI workflows',
+        'in our repository: https://github.com/jurplel/install-qt-action .',
+        'Exiting...',
       )
-      message = '%0A'.join(lines)
+      message = ' '.join(lines)
       print(f"::error title=Action not built::{message}")
 
       exit(1)
