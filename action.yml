@@ -94,7 +94,7 @@ runs:
   steps:
   - name: Check the existence of built JavaScript action
     shell: python
-    pwd: ${{ github.action_path }}
+    working-directory: ${{ github.action_path }}
     run: |
       import os
       os.system('pwd')
